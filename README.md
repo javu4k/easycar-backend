@@ -1,9 +1,9 @@
 # EasyCar - Sistema de Aluguel de Carros
 
 ## Descricao do Projeto
-O EasyCar e uma API REST desenvolvida em Django para informatizar o processo de aluguel de veiculos. O sistema permite o cadastro de clientes, gestao de frota e registro de alugueis, com controle de acesso baseado em grupos de usuarios (Funcionarios e Clientes).
+O **EasyCar** e uma API REST desenvolvida em Django para informatizar o processo de aluguel de veiculos. Atualmente, muitos registros sao feitos manualmente, dificultando o controle. Este sistema permite o cadastro de clientes, gestao de frota e registro de alugueis, garantindo seguranca e organizacao dos dados.
 
-Projeto desenvolvido para a disciplina de Back-End Python.
+O projeto implementa autenticacao via Token e controle de acesso baseado em grupos (Funcionarios e Clientes).
 
 ## Integrantes
 * Julia (Desenvolvedora 1 - Infraestrutura e Gestao de Usuarios)
@@ -11,41 +11,96 @@ Projeto desenvolvido para a disciplina de Back-End Python.
 
 ## Tecnologias Utilizadas
 * Python 3
-* Django & Django REST Framework
+* Django
+* Django REST Framework (DRF)
 * SQLite (Banco de Dados)
 * drf-spectacular (Documentacao Swagger/Redoc)
 
 ## Pre-requisitos
-* Python instalado (versao 3.8 ou superior)
+* Python instalado no Windows
 * Git instalado
 
-## Instalacao e Configuracao
+## Instalacao e Configuracao (Windows)
+
+Siga os passos abaixo para rodar o projeto em ambiente Windows:
 
 1. Clone o repositorio:
-   git clone https://github.com/SEU-USUARIO/easycar-backend.git
-   cd easycar-backend
+```bash
+git clone [https://github.com/javu4k/easycar-backend.git](https://github.com/javu4k/easycar-backend.git)
+cd easycar-backend
+Crie e ative o ambiente virtual:
 
-2. Crie e ative o ambiente virtual:
-   # No Windows:
-   python -m venv venv
-   venv\Scripts\activate
+```bash
 
-   # No Linux/Mac:
-   python3 -m venv venv
-   source venv/bin/activate
+python -m venv venv
+venv\Scripts\activate
+Instale as dependencias do projeto:
 
-3. Instale as dependencias:
-   pip install -r requirements.txt
+```bash
 
-4. Realize as migracoes do banco de dados:
-   python manage.py migrate
+pip install -r requirements.txt
+Realize as migracoes do banco de dados:
 
-5. Configuracao Inicial (Criacao de Grupos):
-   Para o sistema funcionar corretamente, e necessario criar os grupos de permissao.
-   Execute o seguinte comando no terminal para abrir o shell do Django:
-   
-   python manage.py shell
+```bash
 
-   Dentro do shell, cole os comandos abaixo e aperte Enter:
-   
-   from django.contrib.auth.models import
+python manage.py migrate
+Configuracao Inicial (Criacao de Grupos): Para o sistema de permissoes funcionar, e necessario criar os grupos "Funcionários" e "Clientes". Execute o comando abaixo para abrir o shell do Django:
+
+```bash
+
+python manage.py shell
+Dentro do shell interativo, cole o seguinte codigo Python e aperte Enter:
+
+Python
+
+from django.contrib.auth.models import Group
+Group.objects.get_or_create(name='Funcionários')
+Group.objects.get_or_create(name='Clientes')
+exit()
+Crie um superusuario (para acessar o Painel Administrativo):
+
+```bash
+
+python manage.py createsuperuser
+Como Rodar a Aplicacao
+Execute o comando abaixo para iniciar o servidor de desenvolvimento:
+
+```bash
+
+python manage.py runserver
+O sistema estara disponivel em: http://127.0.0.1:8000/
+
+Documentacao da API
+A documentacao interativa gerada automaticamente pode ser acessada nos seguintes enderecos:
+
+Swagger UI: http://127.0.0.1:8000/api/docs/
+
+Redoc: http://127.0.0.1:8000/api/docs/redoc/
+
+Principais Rotas e Recursos
+O sistema possui as seguintes rotas principais:
+
+Autenticacao
+POST /api/auth/token/ - Obtencao de Token de acesso.
+
+Usuarios e Perfis (Apenas Funcionarios)
+GET /api/users/ - Listagem de usuarios.
+
+POST /api/perfis-clientes/ - Cadastro de novos perfis de clientes.
+
+Frota (Carros)
+GET /api/carros/ - Listar carros disponiveis (Acesso liberado).
+
+POST /api/carros/ - Cadastrar novo carro (Apenas Funcionarios).
+
+Alugueis
+POST /api/alugueis/ - Registrar um novo aluguel (Apenas Funcionarios).
+
+GET /api/alugueis/ - Listar alugueis realizados.
+
+Estrutura do Projeto
+accounts/: Aplicativo responsavel pela gestao de usuarios, autenticacao e perfil do cliente.
+
+core/: Aplicativo responsavel pela regra de negocio, gestao de carros e alugueis.
+
+cconfig/: Configuracoes globais do projeto Django.

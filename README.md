@@ -30,23 +30,23 @@ git clone [https://github.com/javu4k/easycar-backend.git](https://github.com/jav
 cd easycar-backend
 Crie e ative o ambiente virtual:
 
-```bash
+Bash
 
 python -m venv venv
 venv\Scripts\activate
 Instale as dependencias do projeto:
 
-```bash
+Bash
 
 pip install -r requirements.txt
 Realize as migracoes do banco de dados:
 
-```bash
+Bash
 
 python manage.py migrate
 Configuracao Inicial (Criacao de Grupos): Para o sistema de permissoes funcionar, e necessario criar os grupos "Funcionários" e "Clientes". Execute o comando abaixo para abrir o shell do Django:
 
-```bash
+Bash
 
 python manage.py shell
 Dentro do shell interativo, cole o seguinte codigo Python e aperte Enter:
@@ -59,13 +59,13 @@ Group.objects.get_or_create(name='Clientes')
 exit()
 Crie um superusuario (para acessar o Painel Administrativo):
 
-```bash
+Bash
 
 python manage.py createsuperuser
 Como Rodar a Aplicacao
 Execute o comando abaixo para iniciar o servidor de desenvolvimento:
 
-```bash
+Bash
 
 python manage.py runserver
 O sistema estara disponivel em: http://127.0.0.1:8000/

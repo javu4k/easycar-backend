@@ -96,4 +96,19 @@ O sistema possui as seguintes rotas principais:
 ### Autenticacao
 * `POST /api/auth/token/` - Obtencao de Token de acesso.
 
-### Usuarios e Perfis (Apenas
+### Usuarios e Perfis (Apenas Funcionarios)
+* `GET /api/users/` - Listagem de usuarios.
+* `POST /api/perfis-clientes/` - Cadastro de novos perfis de clientes.
+
+### Frota (Carros)
+* `GET /api/carros/` - Listar carros disponiveis (Acesso liberado).
+* `POST /api/carros/` - Cadastrar novo carro (Apenas Funcionarios).
+
+### Alugueis
+* `POST /api/alugueis/` - Registrar um novo aluguel (Apenas Funcionarios).
+* `GET /api/alugueis/` - Listar alugueis realizados.
+
+## Estrutura do Projeto
+* **accounts/**: Aplicativo responsavel pela gestao de usuarios, autenticacao e perfil do cliente.
+* **core/**: Aplicativo responsavel pela regra de negocio, gestao de carros e alugueis.
+* **cconfig/**: Configuracoes globais do projeto Django.

@@ -1,10 +1,10 @@
-from django.shortcuts import render
-
-# Create your views here.
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 from rest_framework import viewsets, permissions
-from .models import Carro, Aluguel
+from rest_framework.decorators import action # IMPORT NECESSÁRIA PARA O @action
+from rest_framework.response import Response # IMPORT NECESSÁRIA PARA RETORNAR RESPOSTAS PERSONALIZADAS
+from .models import Carro, Aluguel, PerfilCliente # Certifique-se de que PerfilCliente está no seu models.py ou importado corretamente. Se estiver em outro app, ajuste a importação.
 from .serializers import CarroSerializer, AluguelSerializer
-
 # Permissão personalizada: Só funcionário pode alterar (clientes apenas leem)
 class IsFuncionarioOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):

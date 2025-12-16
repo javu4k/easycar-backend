@@ -26,9 +26,11 @@ INSTALLED_APPS = [
     'rest_framework.authtoken', # Autenticação por Token [cite: 39]
     'drf_spectacular',          # Documentação Swagger [cite: 44]
     'django_filters',           # Filtros (Sugestão de melhoria) [cite: 111]
+    
 
     # Meus Apps
     'accounts',                 # Seu app de Infraestrutura
+    'core',
 ]
 
 MIDDLEWARE = [

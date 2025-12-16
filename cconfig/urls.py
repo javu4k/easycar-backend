@@ -18,8 +18,11 @@ router.register(r'users', UserViewSet)
 router.register(r'perfis-clientes', PerfilClienteViewSet)
 
 # Registros da parte do Felipe (NOVO)
-router.register(r'carros', CarroViewSet)
-router.register(r'alugueis', AluguelViewSet)
+router.register(r'carros', CarroViewSet, basename='carro')
+router.register(r'alugueis', AluguelViewSet, basename='aluguel')
+
+# Rotas Personalizadas (que vão gerar /api/rotas-especificas/me/alugueis/)
+router.register(r'rotas-especificas', RotasEspecificasViewSet, basename='rotas-especificas')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

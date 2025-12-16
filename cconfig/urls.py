@@ -8,7 +8,7 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, Spec
 from accounts.views import UserViewSet, PerfilClienteViewSet
 
 # Importando as views do Felipe (NOVO - App Core)
-from core.views import CarroViewSet, AluguelViewSet
+from core.views import CarroViewSet, AluguelViewSet, RotasEspecificasViewSet
 
 # Configurando o roteador (gera as rotas automaticamente)
 router = DefaultRouter()

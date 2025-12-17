@@ -10,7 +10,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'password', 'groups']
 
     def create(self, validated_data):
-        # Garante que a senha seja salva criptografada
         groups_data = validated_data.pop('groups', [])
         password = validated_data.pop('password')
         user = User(**validated_data)
@@ -21,7 +20,6 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 class PerfilClienteSerializer(serializers.ModelSerializer):
-    # Mostra o nome do usuário para facilitar a leitura, além do ID
     user_username = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:

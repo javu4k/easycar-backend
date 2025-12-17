@@ -21,15 +21,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Bibliotecas de terceiros (Requisitos do Projeto)
-    'rest_framework',           # API Rest
-    'rest_framework.authtoken', # Autenticação por Token [cite: 39]
-    'drf_spectacular',          # Documentação Swagger [cite: 44]
-    'django_filters',           # Filtros (Sugestão de melhoria) [cite: 111]
-    
+    # Bibliotecas
+    'rest_framework',          
+    'rest_framework.authtoken', 
+    'drf_spectacular',          
+    'django_filters',         
 
     # Meus Apps
-    'accounts',                 # Seu app de Infraestrutura
+    'accounts',
     'core',
 ]
 
@@ -43,7 +42,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'cconfig.urls' # Atenção ao nome da pasta com 2 Cs
+ROOT_URLCONF = 'cconfig.urls'
 
 TEMPLATES = [
     {
@@ -61,7 +60,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'cconfig.wsgi.application' # Atenção ao nome da pasta com 2 Cs
+WSGI_APPLICATION = 'cconfig.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -112,10 +111,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# --- CONFIGURAÇÕES DO DRF (REST FRAMEWORK) ---
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',  # [cite: 39]
+        'rest_framework.authentication.TokenAuthentication',  #
         'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
@@ -124,7 +122,6 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
-# --- CONFIGURAÇÕES DO SPECTACULAR (DOCS) ---
 SPECTACULAR_SETTINGS = {
     'TITLE': 'EasyCar API',
     'DESCRIPTION': 'API de aluguel de carros para o Projeto Integrador.',
